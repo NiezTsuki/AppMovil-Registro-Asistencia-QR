@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
+  formLogin = {
+    usuario:"",
+    password:""
+  }
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  Ingresar() {
+
+    console.log("Usuario" + this.formLogin.usuario)
+    console.log("Contraseña" + this.formLogin.password)
   }
 
 }
