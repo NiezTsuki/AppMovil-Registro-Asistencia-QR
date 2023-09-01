@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  mensaje: string = "";
+
+  constructor(private rutaActiva : ActivatedRoute) {
+
+    this.rutaActiva.queryParams.subscribe(params =>{
+
+      if(params['usuario'])
+      {
+        this.mensaje = params['usuario']
+      }
+
+    })
+  }
 
   ngOnInit() {
   }

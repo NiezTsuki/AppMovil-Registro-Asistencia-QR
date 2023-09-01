@@ -1,20 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="ion-text-center">Login</ion-title>
+    <ion-title class="ion-text-center">RegistrAPP</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label position="floating">Usuario</ion-label>
-    <ion-input [(ngModel)]="formLogin.usuario" placeholder="Ingrese su usuario"></ion-input>
-  </ion-item>
+  <ion-img class = logoDuoc src="assets/imagenes/logoDuoc.png"></ion-img>
+  <div class="login-form">
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="formLogin.usuario" placeholder="Ingrese su usuario"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input [(ngModel)]="formLogin.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="formLogin.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
+    </ion-item>
 
-  <ion-button (click)="Ingresar()" expand="full">Ingresar</ion-button>
-  <ion-button [routerLink]="['/restablecer']" expand="full">Restablecer</ion-button>
+    <ion-button (click)="Ingresar()" expand="full">Ingresar</ion-button>
+    <ion-button [routerLink]="['/restablecer']" class="reset-button" expand="full">Restablecer</ion-button>
+  </div>
 </ion-content>
+

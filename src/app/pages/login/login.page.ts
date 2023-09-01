@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,11 @@ export class LoginPage implements OnInit {
     console.log("Usuario" + this.formLogin.usuario)
     console.log("Contraseña" + this.formLogin.password)
 
-    this.router.navigate(['/home'])
+    let datosEnviar : NavigationExtras = {
+      queryParams : {usuario:  this.formLogin.usuario}
+    }
+
+    this.router.navigate(['/home'], datosEnviar);
   }
 
 }
