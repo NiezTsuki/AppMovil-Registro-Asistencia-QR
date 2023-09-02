@@ -66,6 +66,26 @@ ion-content {
     animation: fadeIn 0.5s ease-out;
 }
 
-.logoDuoc {
-    width: 200px;
-}
+
+
+/* login.page.scss */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajusta la altura para centrar verticalmente */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .logoDuoc {
+    max-width: 100%;
+    margin-bottom: 20px; /* Ajusta el espacio entre la imagen y el formulario según tus preferencias */
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 300px; /* Ajusta el ancho máximo del formulario según tus preferencias */
+  }
+  
