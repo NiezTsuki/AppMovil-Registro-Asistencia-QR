@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestablecerPage implements OnInit {
 
+  formRestablecer = {
+  usuario:""
+  }
+
   constructor() { }
 
   ngOnInit() {

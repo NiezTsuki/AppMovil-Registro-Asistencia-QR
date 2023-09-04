@@ -7,10 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">restablecer</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div class="logo-container">
+
+  </div>
+  <div class="login-form">
+    <ion-img class="logoDuoc" src="assets/imagenes/logoDuoc.png"></ion-img>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input  placeholder="Ingrese su usuario"></ion-input>
+    </ion-item>
+
+    <ion-button  [routerLink]="['/login']" class="reset-button" style="color: goldenrod;" expand="full">Restablecer</ion-button>
+  </div>
+
+
 </ion-content>
