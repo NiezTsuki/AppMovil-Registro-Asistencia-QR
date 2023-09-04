@@ -1,0 +1,90 @@
+ion-header {
+    ion-toolbar {
+    ion-title {
+        font-size: 24px;
+    }
+    }
+}
+
+ion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .login-form {
+    max-width: 300px;
+    width: 80%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+
+    ion-item {
+        --background: #f4f4f4;
+        margin-bottom: 15px;
+
+        ion-label {
+        color: #333;
+        }
+    }
+
+    ion-button {
+        --background: #007bff;
+        --color: #fff;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    .reset-button {
+        --background: #ddd;
+        margin-top: 10px;
+    }
+    }
+}
+
+// login.page.scss
+
+@keyframes fadeIn {
+    from {
+    opacity: 0;
+    transform: translateY(-20px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+.login-form {
+    /* ... tus estilos existentes ... */
+
+    animation: fadeIn 0.5s ease-out;
+}
+
+
+
+/* login.page.scss */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajusta la altura para centrar verticalmente */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .logoDuoc {
+    max-width: 100%;
+    margin-bottom: 20px; /* Ajusta el espacio entre la imagen y el formulario según tus preferencias */
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 300px; /* Ajusta el ancho máximo del formulario según tus preferencias */
+  }
+  
