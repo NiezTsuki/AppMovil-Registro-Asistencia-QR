@@ -9,7 +9,7 @@
 
       <app-custom-input 
       autocomplete="name"
-      icon="person-outline"
+      icon="person"
       [control]="form.controls.name"
       type="text"
       label="Nombre"
@@ -22,7 +22,7 @@
 
       <app-custom-input 
       autocomplete="email"
-      icon="mail-outline"
+      icon="mail"
       [control]="form.controls.email"
       type="email"
       label="Correo"
@@ -36,7 +36,7 @@
   
       <app-custom-input 
       [control]="form.controls.password"
-      icon="lock-closed-outline"
+      icon="lock-closed"
       type="password"
       label="Contraseña"
       ></app-custom-input> 
@@ -46,9 +46,9 @@
       </div>
 
       
-      <ion-button  expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+      <ion-button  expand="block" mode="md" class="submit enlarge-button custom-button" type="submit" [disabled]="form.invalid">
         Registrarse
-        <ion-icon slot="end" name="person-add-outline"></ion-icon>
+        <ion-icon slot="end" name="person-add"></ion-icon>
       </ion-button>
 
 

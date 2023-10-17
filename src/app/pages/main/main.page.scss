@@ -1,13 +1,13 @@
 ion-content {
-    --background: var(--ion-color-primary);
-    --color: var(--ion-color-primary-contrast);
+    --background:#001b35;
+    --color: #001b35;
     --padding-top: 20px;
 }
 
 ion-item{
-    font-size: 14px;
-    color: var(--ion-color-light);
-    --background: var(--ion-color-primary);
+    font-size: 20px;
+    color: white;
+    --background: #001b35;
 
     ion-icon{
         color: var(--ion-color-light);
@@ -29,6 +29,7 @@ ion-menu{
 }
 
 h4{
+    color: white;
     margin-top: 5px;
     font-weight: bold;
 }

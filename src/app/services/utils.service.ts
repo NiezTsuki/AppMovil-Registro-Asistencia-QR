@@ -30,8 +30,16 @@ async takePicture(promptLabelHeader: string) {
 
   //Loading//
 
-  loading() {
-    return this.loadingCtrl.create({spinner: 'crescent'})
+  async loading(message: string = 'Cargando...') {
+    const loading = await this.loadingCtrl.create({
+      message,
+      spinner: 'circles',
+      duration: 2000,
+      translucent: true, 
+    });
+    await loading.present();
+
+    return loading;
   }
 
   //Toast//
@@ -57,4 +65,7 @@ async takePicture(promptLabelHeader: string) {
     return JSON.parse(localStorage.getItem(key))
   }
 
+
 }
+
+

@@ -1,18 +1,20 @@
 
-<ion-header class="ion-no-border">
-  <ion-toolbar color="primary">
-
-  <ion-buttons slot="start">
-    <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
-  </ion-buttons>
-
-  <ion-buttons slot="start">
-    <ion-menu-button *ngIf="showMenu" menu="menu-content"></ion-menu-button>
-  </ion-buttons>
+<ion-header class="custom-header">
+  <ion-toolbar> 
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button *ngIf="showMenu" menu="menu-content"></ion-menu-button>
+    </ion-buttons>
 
     <ion-title>
-      <strong>{{title}}</strong>
-      <div class="admin">R E G I S T R A P P</div>
-      </ion-title>
+      <div class="header-title">
+        <strong>{{title}}</strong>
+        <div class="app-name">R E G I S T R A P P</div>
+      </div>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+

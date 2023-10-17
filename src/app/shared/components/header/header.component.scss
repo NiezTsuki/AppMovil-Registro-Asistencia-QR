@@ -1,3 +1,19 @@
 .admin{
     font-size: 13px;
 }
+
+.custom-header {
+    ion-toolbar {
+      --background: #001b35; /* Color corporativo de Duoc UC */
+      color: rgb(255, 255, 255); /* Color del texto en el encabezado */
+
+    .header-title {
+        strong {
+          font-size: 24px; /* Tamaño de fuente para el título */
+        }
+        .app-name {
+          font-size: 14px; /* Tamaño de fuente para el nombre de la aplicación */
+        }
+    }
+    }
+}

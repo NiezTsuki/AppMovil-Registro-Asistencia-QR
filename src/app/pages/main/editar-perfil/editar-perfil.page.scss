@@ -1,0 +1,29 @@
+
+ion-content {
+    --background: #f2f2f2;
+    /* Cambia el color de fondo del ion-content */
+}
+
+ion-list {
+    ion-item {
+        --background: #fff;
+        /* Cambia el color de fondo de los elementos del ion-list */
+
+        ion-label {
+            color: #333;
+            /* Cambia el color del texto de las etiquetas */
+        }
+
+        ion-input {
+            --border-color: #3498db;
+            /* Cambia el color del borde de los input */
+        }
+    }
+}
+
+ion-button {
+    --background: #001b35;
+    /* Cambia el color de fondo del botón */
+    --color: #fff;
+    /* Cambia el color del texto del botón */
+}

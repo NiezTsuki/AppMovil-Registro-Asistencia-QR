@@ -7,11 +7,11 @@
 
       <app-logo></app-logo>
     
-      <p class="ion-text-center">Te enviaremos un email para que puedas restablecer tu contraseña</p>
+      <p class="ion-text-center">Te llegara un email para que puedas restablecer tu contraseña <ion-icon name="happy-outline" style="font-size: 2em; padding-top: 10px;"></ion-icon></p>
 
       <app-custom-input 
       autocomplete="email"
-      icon="mail-outline"
+      icon="mail"
       [control]="form.controls.email"
       type="email"
       label="Correo"
@@ -22,9 +22,9 @@
         <div *ngIf="form.controls.email.errors?.['email']">Ingrese un correo valido</div>
       </div>
       
-      <ion-button  expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+      <ion-button  expand="block" mode="md" class="submit enlarge-button custom-button" type="submit" [disabled]="form.invalid">
         Recuperar
-        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        <ion-icon slot="end" name="send"></ion-icon>
       </ion-button>
 
     </form>

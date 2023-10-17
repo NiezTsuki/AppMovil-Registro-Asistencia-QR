@@ -9,7 +9,7 @@
 
       <app-custom-input 
       autocomplete="email"
-      icon="mail-outline"
+      icon="mail"
       [control]="form.controls.email"
       type="email"
       label="Correo"
@@ -22,8 +22,8 @@
   
   
       <app-custom-input 
+      icon="lock-closed"
       [control]="form.controls.password"
-      icon="lock-closed-outline"
       type="password"
       label="Contraseña"
       ></app-custom-input> 
@@ -34,14 +34,14 @@
 
       <p routerLink="recuperar-contra" class="ion-text-end">¿Olvidaste tu contraseña?</p>
       
-      <ion-button  expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+      <ion-button expand="block" mode="md" class="submit enlarge-button custom-button" type="submit" [disabled]="form.invalid">
         Ingresar
-        <ion-icon slot="end" name="log-in-outline"></ion-icon>
+        <ion-icon slot="end" name="log-in"></ion-icon>
       </ion-button>
 
-      <ion-button class="ion-margin-top" routerLink="registrarse" routerLinkActive="router-link-active"  expand="block" mode="ios" fill="outline">
+      <ion-button class="ion-margin-top enlarge-button custom-button" routerLink="registrarse" routerLinkActive="router-link-active"  expand="block" mode="md" >
         Registrarse
-        <ion-icon slot="end" name="person-add-outline"></ion-icon>
+        <ion-icon slot="end" name="person-add"></ion-icon>
       </ion-button>
 
     </form>

@@ -1,0 +1,10 @@
+.enlarge-button {
+    font-size: 20px; /* Ajusta el tamaño de fuente del botón */
+    padding: 10px 0px; /* Ajusta el espaciado interno del botón */
+}
+
+
+.custom-button {
+    --background: #001b35; /* Cambia el color de fondo del botón a un color personalizado */
+    color: #fff; /* Cambia el color del texto del botón (si es necesario) */
+}

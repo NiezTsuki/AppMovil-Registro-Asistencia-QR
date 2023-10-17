@@ -8,11 +8,16 @@
     <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
   </ion-avatar>
 
-  <ion-button class="photo-btn" (click)="takeImage()" mode="ios" size="small" shape="round">
+  <ion-button class="photo-btn" (click)="takeImage()" mode="md" size="small" shape="round">
     <ion-icon name="camera-outline"></ion-icon>
   </ion-button>
 
   <h2>{{user().name}}</h2>
 
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="goToEditarPerfil()">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
