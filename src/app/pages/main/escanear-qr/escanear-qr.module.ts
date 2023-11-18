@@ -4,23 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainPageRoutingModule } from './main-routing.module';
+import { EscanearQRPageRoutingModule } from './escanear-qr-routing.module';
 
-import { MainPage } from './main.page';
+import { EscanearQRPage } from './escanear-qr.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { QRCodeModule } from 'angularx-qrcode';
-
-
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainPageRoutingModule,
+    EscanearQRPageRoutingModule,
     SharedModule,
-    QRCodeModule
+    ZXingScannerModule
   ],
-  declarations: [MainPage]
+  declarations: [EscanearQRPage]
 })
-export class MainPageModule {}
+export class EscanearQRPageModule {}

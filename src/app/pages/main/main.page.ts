@@ -39,5 +39,17 @@ export class MainPage implements OnInit {
     return this.utilsSvc.getFromLocalStorage('user')
   }
 
+  //Visualizar solo para los profesores
+  isProfesor(): boolean {
+    const user = this.user();
+    return user?.email?.endsWith('@duocuc.cl');
+  }
+
+  //Visualizar solo para los alumnos
+  isAlumno(): boolean {
+    const user = this.user();
+    return user?.email?.endsWith('@gmail.com');
+  }
+
 }
 

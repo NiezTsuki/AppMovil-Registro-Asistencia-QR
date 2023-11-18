@@ -1,0 +1,22 @@
+<app-header backButton="/main/home" title="Asignaturas"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-card *ngFor="let asignatura of asignaturas">
+        <img [src]="asignatura.imagenUrl" alt="{{ asignatura.nombre }}" />
+        <ion-card-content>
+            <ion-card-title>{{ asignatura.nombre }}</ion-card-title>
+            <!-- Mostrar el botón solo si no se muestra el QR -->
+            <ion-button *ngIf="!mostrarQR" (click)="generateAndShowQR(asignatura)">Generar QR</ion-button>
+
+            <!-- Usar el detalle del QR de la asignatura si está disponible -->
+            <qrcode *ngIf="mostrarQR" [qrdata]="asignatura.detalleQR"></qrcode>
+        </ion-card-content>
+
+    </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="goToCrearAsignatura()">
+            <ion-icon name="create-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

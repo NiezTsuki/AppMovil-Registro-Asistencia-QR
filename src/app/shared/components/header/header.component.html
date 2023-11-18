@@ -3,11 +3,9 @@
   <ion-toolbar> 
     <ion-buttons slot="start">
       <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
-    </ion-buttons>
-    
-    <ion-buttons slot="start">
       <ion-menu-button *ngIf="showMenu" menu="menu-content"></ion-menu-button>
     </ion-buttons>
+    
 
     <ion-title>
       <div class="header-title">

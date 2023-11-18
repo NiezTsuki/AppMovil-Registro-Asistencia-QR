@@ -4,23 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainPageRoutingModule } from './main-routing.module';
+import { AsignaturasPageRoutingModule } from './asignaturas-routing.module';
 
-import { MainPage } from './main.page';
+import { AsignaturasPage } from './asignaturas.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { QRCodeModule } from 'angularx-qrcode';
-
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainPageRoutingModule,
+    AsignaturasPageRoutingModule,
     SharedModule,
     QRCodeModule
   ],
-  declarations: [MainPage]
+  declarations: [AsignaturasPage]
 })
-export class MainPageModule {}
+export class AsignaturasPageModule {}

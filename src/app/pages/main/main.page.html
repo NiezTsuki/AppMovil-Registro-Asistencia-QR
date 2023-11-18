@@ -20,6 +20,21 @@
 
     </ion-menu-toggle>
 
+      <ion-menu-toggle auto-hide="false" *ngIf="isProfesor()">
+        <ion-item [routerLink]="'/main/asignaturas'" routerDirection="root" detail>
+          <ion-icon slot="start" name="book-outline"></ion-icon>
+          <ion-label>Asignaturas</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+      <ion-menu-toggle auto-hide="false" *ngIf="isAlumno()">
+        <ion-item [routerLink]="'/main/escanear-qr'" routerDirection="root" detail>
+          <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+          <ion-label>Escanear QR</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    
 
   </ion-content>
 
