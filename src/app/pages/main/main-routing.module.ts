@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'escanear-qr',
     loadChildren: () => import('./escanear-qr/escanear-qr.module').then( m => m.EscanearQRPageModule)
   },
+  {
+    path: 'asistencia',
+    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,9 +1,16 @@
 <app-header [showMenu]="true" title="Inicio"></app-header>
 
-<ion-content class="ion-text-center ion-padding-top">
+<ion-content class="ion-padding">
 
-Pagina en mantenimiento
+    <h4>Buenos dias, {{user()?.name}}.</h4>
 
+    <p class="small-text">{{ fechaActual }}</p>
 
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>¿Sabías que puedes postular a Gratuidad, Becas y CAE para el 2024? </ion-card-title>
+            <ion-card-subtitle>Completando el formulario www.fuas.cl a partir del mes de octubre.</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
 
 </ion-content>

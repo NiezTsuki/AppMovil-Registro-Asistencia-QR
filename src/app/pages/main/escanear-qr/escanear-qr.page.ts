@@ -1,76 +1,94 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { Result, BarcodeFormat } from '@zxing/library';
+import { AlertController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-escanear-qr',
   templateUrl: './escanear-qr.page.html',
   styleUrls: ['./escanear-qr.page.scss'],
 })
-export class EscanearQRPage implements OnInit {
-
-  
+export class EscanearQRPage implements OnInit, OnDestroy {
+  @ViewChild('scanner', { static: false })
+  scanner: ZXingScannerComponent;
 
   hasCameras: boolean;
-  formats: BarcodeFormat[] = [BarcodeFormat.QR_CODE];
-  mostrarEscaner: boolean = false;
+  mostrarEscaner: boolean = true;
+  allowedFormats = [
+    BarcodeFormat.QR_CODE,
+    BarcodeFormat.EAN_13,
+    BarcodeFormat.CODE_128,
+    BarcodeFormat.DATA_MATRIX
+    // Agrega otros formatos según sea necesario
+  ];
 
-  constructor(private alertController: AlertController, private firebaseService: FirebaseService) {}
+  constructor(
+    private alertController: AlertController,
+    private firebaseService: FirebaseService
+  ) {}
 
   ngOnInit() {
-    // Verifica si hay cámaras disponibles
     this.hasCameras = navigator.mediaDevices.getUserMedia !== undefined;
   }
 
-  iniciarEscaner(): void {
-    // Cambia la visibilidad del componente del escáner al hacer clic en el botón
-    this.mostrarEscaner = true;
+  ngOnDestroy() {
+    this.scanner.ngOnDestroy();
   }
 
-  async escanearCodigo(event: any): Promise<void> {
-    // Asegúrate de que el evento contiene un resultado y obtén el texto del código QR
-    const resultado: Result = event.codeResult ? event.codeResult : event;
-  
-    // Lógica para procesar el código QR escaneado
-    const textoQR = this.obtenerTextoQR(resultado);
-  
-    if (textoQR) {
-      console.log('Código escaneado:', textoQR);
-  
-      try {
-        // Llama a tu servicio de asistencia para registrar la asistencia y obtén la información del estudiante
-        const infoEstudiante = await this.firebaseService.registrarAsistenciaDesdeQR(textoQR);
+  iniciarEscaner(): void {
+    this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
+      // Maneja la disponibilidad de cámaras
+    });
 
-        // Puedes utilizar la información del estudiante según sea necesario
-        console.log('Información del estudiante:', infoEstudiante);
+    this.scanner.camerasNotFound.subscribe(() => {
+      // Maneja la falta de cámaras
+    });
 
-        // Resto del código...
-      } catch (error) {
-        console.error('Error al procesar el código QR:', error);
-        // Muestra una alerta en caso de error
-        await this.mostrarAlerta('Error', 'Error al procesar el código QR. Por favor, inténtalo de nuevo.');
+    this.scanner.scanComplete.subscribe((result: Result) => {
+      this.escanearCodigo(result);
+    });
+
+    this.scanner.scanStart();
+  }
+
+  async escanearCodigo(result: Result): Promise<void> {
+    if (result && typeof result === 'object' && 'getText' in result) {
+      const textoQR = result.getText();
+  
+      if (textoQR) {
+        console.log('Código escaneado:', textoQR);
+  
+        try {
+          const infoEstudiante: User = await this.firebaseService.registrarAsistenciaDesdeQR(textoQR);
+  
+          if (infoEstudiante) {
+            console.log('Información del estudiante:', infoEstudiante);
+  
+            // Mostrar la alerta de asistencia registrada correctamente.
+            await this.mostrarAlerta('Éxito', 'Se registró la asistencia correctamente.');
+  
+            // Resto del código...
+          } else {
+            console.error('Error al procesar el código QR: No se pudo obtener la información del estudiante.');
+            await this.mostrarAlerta('Error', 'Error al procesar el código QR. Por favor, inténtalo de nuevo.');
+          }
+        } catch (error) {
+          console.error('Error al procesar el código QR:', error);
+          await this.mostrarAlerta('Error', 'Error al procesar el código QR. Por favor, inténtalo de nuevo.');
+        }
       }
     }
   }
   
-  // Resto del código...
+  
 
-  // Función para obtener el texto del código QR
-  obtenerTextoQR(result: Result): string | null {
-    if (result && result.getText) {
-      return result.getText();
-    } else {
-      return null;
-    }
-  }
-
-  // Función para mostrar una alerta
   async mostrarAlerta(header: string, message: string): Promise<void> {
     const alert = await this.alertController.create({
       header,
       message,
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     await alert.present();
   }
@@ -78,9 +96,4 @@ export class EscanearQRPage implements OnInit {
   cambiarVisibilidadEscaner(): void {
     this.mostrarEscaner = !this.mostrarEscaner;
   }
-
 }
-
-
-
-

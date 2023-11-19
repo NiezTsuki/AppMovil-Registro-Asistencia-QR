@@ -1,11 +1,13 @@
 <app-header backButton="/main/home" title="Escanear QR"></app-header>
 
 <ion-content>
-  <!-- Botón para cambiar la visibilidad del escáner -->
-  <ion-button expand="full" (click)="cambiarVisibilidadEscaner()">
-    {{ mostrarEscaner ? 'Ocultar Escáner' : 'Mostrar Escáner' }}
-  </ion-button>
+  <div *ngIf="mostrarEscaner">
+    <zxing-scanner #scanner
+                  [autostart]="true"
+                  [formats]="allowedFormats"
+                  [previewFitMode]="'cover'"
+                  (scanComplete)="escanearCodigo($event)">
+    </zxing-scanner>
+  </div>
 
-  <!-- Componente del escáner -->
-  <zxing-scanner *ngIf="mostrarEscaner" [formats]="formats" (codeEvent)="escanearCodigo($event)"></zxing-scanner>
 </ion-content>

@@ -7,7 +7,7 @@
     <ion-avatar>
       <img *ngIf="user()?.image" [src]="user()?.image" />
   
-      <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
+      <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline" style="color: white;"></ion-icon>
     </ion-avatar>
 
     <h4>{{user()?.name}}</h4>
@@ -32,6 +32,13 @@
         <ion-item [routerLink]="'/main/escanear-qr'" routerDirection="root" detail>
           <ion-icon slot="start" name="qr-code-outline"></ion-icon>
           <ion-label>Escanear QR</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="false" *ngIf="isAlumno()">
+        <ion-item [routerLink]="'/main/asistencia'" routerDirection="root" detail>
+          <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          <ion-label>Asistencias</ion-label>
         </ion-item>
       </ion-menu-toggle>
     
