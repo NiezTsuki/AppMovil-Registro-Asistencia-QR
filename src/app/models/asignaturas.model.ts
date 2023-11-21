@@ -10,7 +10,10 @@ export interface Asignatura {
     nombre: string;
     imagenUrl: string;
     clases: Clase[];
-    mostrarDetalleQR?: boolean; // Agrega esta propiedad opcional
-    detalleQR?: string; // Agrega esta propiedad opcional
+    mostrarQR?: boolean; // Propiedad opcional
+    detalleQR?: string; // Propiedad opcional
+    idClase?: string; // Propiedad opcional
 }
+
+
 

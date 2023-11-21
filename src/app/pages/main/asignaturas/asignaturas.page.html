@@ -6,7 +6,7 @@
         <ion-card-content>
             <ion-card-title>{{ asignatura.nombre }}</ion-card-title>
             <!-- Mostrar el botón solo si no se muestra el QR -->
-            <ion-button *ngIf="!mostrarQR" (click)="generateAndShowQR(asignatura)">Generar QR</ion-button>
+            <ion-button *ngIf="!asignatura.mostrarQR" (click)="generateAndShowQR(asignatura, asignatura.idClase)">Generar QR</ion-button>
 
             <!-- Usar el detalle del QR de la asignatura si está disponible -->
             <qrcode *ngIf="mostrarQR" [qrdata]="asignatura.detalleQR"></qrcode>

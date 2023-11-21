@@ -26,7 +26,8 @@ export class EscanearQRPage implements OnInit, OnDestroy {
 
   constructor(
     private alertController: AlertController,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    
   ) {}
 
   ngOnInit() {
@@ -61,18 +62,30 @@ export class EscanearQRPage implements OnInit, OnDestroy {
         console.log('Código escaneado:', textoQR);
   
         try {
-          const infoEstudiante: User = await this.firebaseService.registrarAsistenciaDesdeQR(textoQR);
+          const partesQR = textoQR.split('-');
+          const fechaClase = `${partesQR[6]}-${partesQR[7]}-${partesQR[8]}`;
+          const idEstudiante = await this.firebaseService.obtenerIdAlumno();
   
-          if (infoEstudiante) {
-            console.log('Información del estudiante:', infoEstudiante);
+          // Verificar si el estudiante ya está registrado para la clase del día
+          const asistenciaRegistrada = await this.firebaseService.verificarAsistenciaRegistrada(idEstudiante, fechaClase);
   
-            // Mostrar la alerta de asistencia registrada correctamente.
-            await this.mostrarAlerta('Éxito', 'Se registró la asistencia correctamente.');
-  
-            // Resto del código...
+          if (asistenciaRegistrada) {
+            console.log('El estudiante ya está registrado para la clase del día.');
+            await this.mostrarAlerta('Error', 'Ya estás registrado para la clase del día.');
           } else {
-            console.error('Error al procesar el código QR: No se pudo obtener la información del estudiante.');
-            await this.mostrarAlerta('Error', 'Error al procesar el código QR. Por favor, inténtalo de nuevo.');
+            const infoEstudiante: User = await this.firebaseService.registrarAsistenciaDesdeQR(textoQR);
+  
+            if (infoEstudiante) {
+              console.log('Información del estudiante:', infoEstudiante);
+  
+              // Mostrar la alerta de asistencia registrada correctamente.
+              await this.mostrarAlerta('Éxito', 'Se registró la asistencia correctamente.');
+  
+              // Resto del código...
+            } else {
+              console.error('Error al procesar el código QR: No se pudo obtener la información del estudiante.');
+              await this.mostrarAlerta('Error', 'Error al procesar el código QR. Por favor, inténtalo de nuevo.');
+            }
           }
         } catch (error) {
           console.error('Error al procesar el código QR:', error);
@@ -81,6 +94,7 @@ export class EscanearQRPage implements OnInit, OnDestroy {
       }
     }
   }
+  
   
   
 

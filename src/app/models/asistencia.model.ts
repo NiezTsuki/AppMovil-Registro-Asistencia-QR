@@ -3,5 +3,5 @@ export interface Asistencia {
     idEstudiante: string;
     idClase: string; 
     fecha: string; 
-    presente: boolean; 
+    presente: boolean;
 }

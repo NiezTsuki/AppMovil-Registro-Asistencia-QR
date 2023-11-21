@@ -55,22 +55,14 @@ export class AsignaturasPage implements OnInit {
     this.router.navigate(['/main/crear-asignatura']);
   }
 
-  generateAndShowQR(asignatura: Asignatura): void {
-    // Obtener la fecha actual
-    const fechaActual = formatDate(new Date(), 'yyyy-MM-dd', 'en-US', 'America/Santiago');
-    
-    // Crear el QR data usando la fecha y el ID de la asignatura
-    const qrData = `${asignatura.id}-${fechaActual}`;
-  
-    // Asignar el detalle del QR
-    asignatura.detalleQR = qrData;
-    
-    // Mostrar el QR
-    this.mostrarQR = true;
+  generateAndShowQR(asignatura: Asignatura, idClase?: string): void {
+    try {
+      asignatura.detalleQR = this.firebaseService.generateQR(asignatura.id, idClase);
+      this.mostrarQR = true;
+    } catch (error) {
+      console.error('Error al generar el código QR:', error);
+    }
   }
-  
-  
-
 }
 
 
